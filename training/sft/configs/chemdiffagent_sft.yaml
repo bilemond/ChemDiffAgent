@@ -1,0 +1,53 @@
+wandb:
+  entity: null
+  resume: false
+
+experiment:
+  project: chemdiffagent-sft
+  output_dir: ./outputs/chemdiffagent-sft
+  run_name: chemdiffagent-sft
+  num_node: 1
+  checkpoints_total_limit: 3
+
+model:
+  pretrained_model: JetLM/SDAR-8B-Chat
+  optimized_name: optimized
+
+dataset:
+  path: /path/to/ChemDiffAgent/training/train.json
+
+training:
+  gradient_checkpointing_enable: true
+  gradient_accumulation_steps: 16
+  batch_size_lm: 1
+  mixed_precision: bf16
+  enable_tf32: true
+  seed: 10086
+  num_train_epochs: 3
+  max_grad_norm: 1.0
+  method: semi-ar
+  mask_tool_responses: true
+  lower_p: 0.1
+  upper_p: 0.9
+  block_size: 128
+  shrink: 1
+  post_num: 0
+  max_gen_length: 8192
+  max_prompt_len: 4096
+
+optimizer:
+  name: adamw
+  params:
+    learning_rate: 1.0e-5
+    scale_lr: false
+    beta1: 0.9
+    beta2: 0.999
+    weight_decay: 0.0
+    epsilon: 1.0e-8
+
+lr_scheduler:
+  scheduler: cosine
+  params:
+    learning_rate: ${optimizer.params.learning_rate}
+    warmup_steps: 0
+    min_lr_scale: 1.0

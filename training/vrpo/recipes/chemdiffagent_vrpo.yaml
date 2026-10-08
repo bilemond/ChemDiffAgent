@@ -1,0 +1,55 @@
+model_name_or_path: /path/to/chemdiffagent-sft
+torch_dtype: bfloat16
+trust_remote_code: true
+attn_implementation: flash_attention_2
+use_peft: false
+
+dataset_name: chemdiffagent_preferences
+dataset_path: /path/to/preferences.jsonl
+dataset_train_split: train
+max_samples: null
+
+block_length: 128
+num_mc: 2
+mask_token_id: null
+tool_resp_left: "<|im_start|>user\n<tool_response>"
+tool_resp_right: "</tool_response><|im_end|>\n<|im_start|>assistant\n"
+
+beta: 0.1
+loss_type: sigmoid
+label_smoothing: 0.0
+max_prompt_length: 3072
+max_completion_length: 2560
+max_length: 6144
+
+bf16: true
+do_eval: false
+num_train_epochs: 5
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 16
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+
+learning_rate: 5.0e-7
+adam_beta1: 0.9
+adam_beta2: 0.99
+weight_decay: 0.01
+max_grad_norm: 0.5
+warmup_ratio: 0.1
+lr_scheduler_type: cosine
+
+output_dir: ./outputs/chemdiffagent-vrpo
+overwrite_output_dir: true
+logging_steps: 10
+logging_first_step: true
+save_strategy: steps
+save_steps: 100
+save_total_limit: 5
+eval_strategy: "no"
+report_to: []
+seed: 42
+dataloader_num_workers: 0
+remove_unused_columns: false
+
