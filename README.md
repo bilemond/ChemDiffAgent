@@ -1,10 +1,10 @@
-# Masked Diffusion Language Agents for Tool-Integrated Chemical Reasoning
+# [NeurIPS 2026] Masked Diffusion Language Agents for Tool-Integrated Chemical Reasoning
 
 🚧 **Coming Soon**
 
 This is the official repository for:
 
-> **Masked Diffusion Language Agents for Tool-Integrated Chemical Reasoning**
+> **[NeurIPS 2026] Masked Diffusion Language Agents for Tool-Integrated Chemical Reasoning**
 
 Accepted to **NeurIPS 2026**.
 
