@@ -56,10 +56,10 @@ hf download Serendipity001/ChemDiffAgent \
 
 Train ChemDiffAgent using Agentic SFT followed by Agentic VRPO.
 
-Run Agentic SFT with the downloaded `training/train.json`:
+Run Agentic SFT with the downloaded `training/train.json`. Set `BASE_MODEL` to the local directory or Hugging Face model ID of your starting checkpoint. The repository uses SDAR by default.
 
 ```bash
-export BASE_MODEL=JetLM/SDAR-8B-Chat
+export BASE_MODEL=/path/to/your/checkpoint
 export SFT_DATA=$PWD/data/ChemDiffAgent/training/train.json
 export OUTPUT_DIR=$PWD/outputs/chemdiffagent-sft
 
